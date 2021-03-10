@@ -39,8 +39,9 @@ MORSE = Hash[
 ]
 
 def decode_morse(morse)
-  morse = ""
-  morse.each_char do |char|
-    morse += MORSE[char]
+  plain_text = ""
+  morse.split(" ,")
+  morse.each do |morse_sequence|
+    plain_text += MORSE.key(morse_sequence)
   end
 end
