@@ -40,8 +40,9 @@ MORSE = Hash[
 
 def decode_morse(morse)
   plain_text = ""
-  morse.split(" ,")
-  morse.each do |morse_sequence|
+  morse_ary = morse.split(" ")
+  morse_ary.each do |morse_sequence|
     plain_text += MORSE.key(morse_sequence)
   end
+  plain_text.upcase
 end
