@@ -1,17 +1,19 @@
 def valid_braces(braces)
-  BRACES = {
+  delimiters = {
     "(" => ")",
     "[" => "]",
     "{" => "}",
-  }.freeze
+  }
 
+  braces_stack = []
   braces.each_char do |char|
-    if BRACES.key?(char)
-      braces_stack = []
+    if delimiters.key?(char)
       braces_stack << char
     else
-      braces_stack.last != BRACES.key(char)
-      break
+      last_brace = braces_stack.pop
+      return false unless last_brace == delimiters.key(char)
     end
   end
+
+  braces_stack.empty?
 end
