@@ -1,10 +1,9 @@
 def generateHashtag(str)
-  tagged_str = str.split.map(&:capitalize).join(" ").gsub(/\s+/, "").insert(0, "#")
-  if tagged_str.chars.count > 140
-    false
-  elsif str.gsub(/\s+/, "").empty?
-    false
-  else
-    tagged_str
-  end
+  return false if str.strip.empty?
+
+  tagged_str = "##{str.split.map(&:capitalize).join}"
+
+  return false if tagged_str.length > 140
+
+  tagged_str
 end
